@@ -4,20 +4,22 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Checking out project code'
+                echo 'Starting Checkout Stage'
+                sh 'pwd'
+                sh 'ls'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building NexaTech website Docker image'
+                echo 'Building Docker Image'
                 sh 'docker build -t nexatech-website:latest ./app'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Checking Docker image'
+                echo 'Testing Docker Image'
                 sh 'docker image inspect nexatech-website:latest'
             }
         }
