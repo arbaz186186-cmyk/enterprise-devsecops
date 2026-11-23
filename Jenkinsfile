@@ -23,5 +23,12 @@ pipeline {
                 sh 'docker image inspect nexatech-website:latest'
             }
         }
+
+        stage('Security Scan') {
+            steps {
+                echo 'Scanning Docker Image with Trivy'
+                sh 'trivy image nexatech-website:latest'
+            }
+        }
     }
 }
