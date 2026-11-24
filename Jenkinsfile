@@ -27,7 +27,7 @@ pipeline {
         stage('Security Scan') {
             steps {
                 echo 'Scanning Docker Image with Trivy'
-                sh 'trivy image nexatech-website:latest'
+                sh 'trivy image --severity HIGH,CRITICAL --exit-code 1 nexatech-website:latest'
             }
         }
     }
